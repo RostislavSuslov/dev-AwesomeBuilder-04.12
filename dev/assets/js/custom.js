@@ -3,12 +3,15 @@ const cellAddress = document.querySelector('#address')
 const cellFloors = document.querySelector('#floors')
 const cellFreeFlat = document.querySelector('#freeFlat')
 const cellSoldFlat = document.querySelector('#soldFlat')
-planItem.forEach(build => {
-    build.addEventListener('mouseover',()=> {
-		const thisAddress = build.getAttribute('data-adress')
-		const thisFloors = build.getAttribute('data-floors')
-		const thisFreeFlats = build.getAttribute('data-free-flats')
-		const thisSoldFlats = build.getAttribute('data-sold-flats')
+const cellActionFlat = document.querySelector('#actionFlat')
+/*
+planItem.forEach(path => {
+
+    path.addEventListener('mouseover',()=> {
+		const thisAddress = path.getAttribute('data-adress')
+		const thisFloors = path.getAttribute('data-floors')
+		const thisFreeFlats = path.getAttribute('data-free-flats')
+		const thisSoldFlats = path.getAttribute('data-sold-flats')
 
 
 		cellAddress.innerText = thisAddress
@@ -17,29 +20,57 @@ planItem.forEach(build => {
 		cellSoldFlat.innerText = thisSoldFlats
 	})
 
-	const buildFreeFlats = build.getAttribute('data-free-flats')
+	const buildFreeFlats = path.getAttribute('data-free-flats')
 
-/*	 buildFreeFlats === "0" ? build.classList.add('sold') : null
-
-
-	if (build.classList.contains('sold')) {
-		const buildLink= build.closest('.item-link')
-
-		buildLink.addEventListener('click', (event)=>{
-			event.preventDefault()
-		})
-	}*/
+    // buildFreeFlats === "0" ? build.classList.add('sold') : null
+	//	if (build.classList.contains('sold')) {
+	//		const buildLink= build.closest('.item-link')
+	//		buildLink.addEventListener('click', (event)=>{
+	//			event.preventDefault()
+	//		})
+	//}
 
 	if( buildFreeFlats === "0") {
-		build.style.cssText = `
+		path.style.cssText = `
 		    fill: #ff8f8f;
 	  		stroke: #940000;
 		`;
 
-		const buildLink= build.closest('.item-link')
+		const buildLink= path.closest('.item-link')
 
 		buildLink.addEventListener('click', (event)=>{
 			event.preventDefault()
 		})
 	}
 })
+*/
+
+
+const showInformation = (cell, dataAttr)=> planItem.forEach(path => {
+	path.addEventListener('mouseover',()=> {
+		cell.innerText = path.getAttribute(dataAttr)
+	})
+
+	const buildFreeFlats = path.getAttribute('data-free-flats')
+
+	buildFreeFlats === "0" ? path.classList.add('sold') : null
+
+	if (path.classList.contains('sold')) {
+		const buildLink= path.closest('.item-link')
+		buildLink.addEventListener('click', (event)=>{
+			event.preventDefault()
+		})
+	}
+
+})
+
+showInformation(cellAddress, 'data-adress')
+showInformation(cellFloors, 'data-floors')
+showInformation(cellFreeFlat, 'data-free-flats')
+
+
+if(document.querySelector('.build-item-page')) {
+	showInformation(cellSoldFlat, 'data-sold-flats')
+	showInformation(cellActionFlat, 'data-action-flats')
+}
+
