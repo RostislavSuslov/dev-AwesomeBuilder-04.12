@@ -1,4 +1,8 @@
-.genplan-item {
+.plan {
+	position: relative;
+}
+
+.item-path {
 	fill: #4800ff;
 	fill-opacity: 0;
 	stroke: #510080;
@@ -9,3 +13,25 @@
 		stroke-opacity: 1;
 	}
 }
+
+.template-navigation {
+	position: absolute;
+	bottom: 100px;
+	right: 100px;
+	background: #fff;
+	padding: 24px;
+	border-radius: 12px;
+	&-title {
+		margin-bottom: 12px;
+	}
+}
+
+.information-list {
+	list-style: none;
+}
+
+.sold {
+	fill: #ff8f8f;
+	stroke: #940000;
+}
+
