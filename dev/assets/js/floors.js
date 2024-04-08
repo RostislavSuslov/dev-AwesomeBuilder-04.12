@@ -99,7 +99,7 @@ const flatArray = [{
 	},
 ]
 
-const installFloor = ()=>{
+const installFloor = ()=> {
 	const flats = document.querySelectorAll('.flat');
 	const flatInfo = document.querySelector('.floor-options');
 	const removeActiveClass =()=> flats.forEach(flat=> {
@@ -117,6 +117,7 @@ const installFloor = ()=>{
 		flatNumber: 1,
 		status: "booking",
 	}]
+
 
 	const renderInformation = (array) => {
 		const flatInformation = array.map(item =>{
@@ -168,12 +169,28 @@ const installFloor = ()=>{
 
 			let flatNumber = flatArray.filter(item =>  item.flatNumber ===  Number(thisFlat) )
 
-
 			renderInformation(flatNumber)
 		})
+
+		flats.forEach(flat=> {
+			if (flat.classList.contains('booking')){
+				flat.querySelector('.flat-status-cell__tspan').innerHTML = "Бронь"
+			} else if (flat.classList.contains('action')) {
+				flat.querySelector('.flat-status-cell__tspan').innerHTML = "Акция"
+			} else if (flat.classList.contains('already-sold')) {
+				flat.querySelector('.flat-status-cell__tspan').innerHTML = "Продано"
+			} else {
+				flat.querySelector('.flat-status-cell__tspan').innerHTML = "Свободна"
+			}
+		})
+
 	})
 }
 
 document.querySelector('.floor-item-page') ? installFloor() : undefined;
+
+
+
+
 
 
