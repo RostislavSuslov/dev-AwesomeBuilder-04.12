@@ -18,7 +18,7 @@ const flatArray = [{
 		price: "700$",
 		priceTotal: "42000$",
 		flatNumber: 2,
-		status: "sold",
+		status: "already-sold",
 	},
 	{
 		id: 2,
@@ -40,7 +40,7 @@ const flatArray = [{
 		price: "700$",
 		priceTotal: "52500$",
 		flatNumber: 4,
-		status: "booking",
+		status: "already-sold",
 	},
 	{
 		id: 4,
@@ -84,7 +84,7 @@ const flatArray = [{
 		price: "700$",
 		priceTotal: "27440$",
 		flatNumber: 8,
-		status: "booking",
+		status: "already-sold",
 	},
 	{
 		id: 8,
@@ -172,17 +172,17 @@ const installFloor = ()=> {
 			renderInformation(flatNumber)
 		})
 
-		flats.forEach(flat=> {
-			if (flat.classList.contains('booking')){
-				flat.querySelector('.flat-status-cell__tspan').innerHTML = "Бронь"
-			} else if (flat.classList.contains('action')) {
-				flat.querySelector('.flat-status-cell__tspan').innerHTML = "Акция"
-			} else if (flat.classList.contains('already-sold')) {
-				flat.querySelector('.flat-status-cell__tspan').innerHTML = "Продано"
-			} else {
-				flat.querySelector('.flat-status-cell__tspan').innerHTML = "Свободна"
-			}
-		})
+
+		if (flat.classList.contains('booking')){
+			flat.querySelector('.flat-status-cell__tspan').innerHTML = "Бронь"
+		} else if (flat.classList.contains('action')) {
+			flat.querySelector('.flat-status-cell__tspan').innerHTML = "Акция"
+		} else if (flat.classList.contains('already-sold')) {
+			flat.querySelector('.flat-status-cell__tspan').innerHTML = "Продано"
+		} else {
+			flat.querySelector('.flat-status-cell__tspan').innerHTML = "Свободна"
+		}
+
 
 	})
 }
